@@ -44,14 +44,14 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
 
         @Test
         public void logged_out_users_cannot_get_all() throws Exception {
-                mockMvc.perform(get("/api/ucsbOrganization/all"))
+                mockMvc.perform(get("/api/ucsborganization/all"))
                                 .andExpect(status().is(403)); // logged out users can't get all
         }
 
         @WithMockUser(roles = { "USER" })
         @Test
         public void logged_in_users_can_get_all() throws Exception {
-                mockMvc.perform(get("/api/ucsbOrganization/all"))
+                mockMvc.perform(get("/api/ucsborganization/all"))
                                 .andExpect(status().is(200)); // logged
         }
 
@@ -61,18 +61,18 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
 
                 // arrange
 
-                when(ucsbOrganizationRepository.findById(eq("OSLI"))).thenReturn(Optional.empty());
+                when(ucsbOrganizationRepository.findById(eq("nonexistent"))).thenReturn(Optional.empty());
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbOrganization?orgCode=OSLI"))
+                MvcResult response = mockMvc.perform(get("/api/ucsborganization?orgCode=nonexistent"))
                                 .andExpect(status().isNotFound()).andReturn();
 
                 // assert
 
-                verify(ucsbOrganizationRepository, times(1)).findById(eq("OSLI"));
+                verify(ucsbOrganizationRepository, times(1)).findById(eq("nonexistent"));
                 Map<String, Object> json = responseToJson(response);
                 assertEquals("EntityNotFoundException", json.get("type"));
-                assertEquals("UCSBOrganization with id OSLI not found", json.get("message"));
+                assertEquals("UCSBOrganization with id nonexistent not found", json.get("message"));
         }
 
         @WithMockUser(roles = { "USER" })
@@ -92,7 +92,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
                                 .orgCode("OSLI")
                                 .orgTranslationShort("STUDENT LIFE")
                                 .orgTranslation("OFFICE OF STUDENT LIFE")
-                                .inactive(false)
+                                .inactive(true)
                                 .build();
 
                 ArrayList<UCSBOrganization> expectedOrganization = new ArrayList<>();
@@ -136,14 +136,15 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
                                 .orgCode("SKY")
                                 .orgTranslationShort("SKYDIVING CLUB")
                                 .orgTranslation("SKYDIVING CLUB AT UCSB")
-                                .inactive(false)
+                                .inactive(true)
                                 .build();
+
 
                 when(ucsbOrganizationRepository.save(eq(SKY))).thenReturn(SKY);
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/ucsborganization/post?orgCode=SKY&orgTranslationShort=SKYDIVING CLUB&orgTranslation=SKYDIVING CLUB AT UCSB&inactive=false")
+                                post("/api/ucsborganization/post?orgCode=SKY&orgTranslationShort=SKYDIVING CLUB&orgTranslation=SKYDIVING CLUB AT UCSB&inactive=true")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
@@ -255,8 +256,8 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
 
                 UCSBOrganization organizationEdited = UCSBOrganization.builder()
                                 .orgCode("SKY")
-                                .orgTranslationShort("SKYDIVING CLUB")
-                                .orgTranslation("SKYDIVING CLUB AT UCSB")
+                                .orgTranslationShort("EARTH CLUB")
+                                .orgTranslation("EARTH CLUB AT UCSB")
                                 .inactive(true)
                                 .build();
 
