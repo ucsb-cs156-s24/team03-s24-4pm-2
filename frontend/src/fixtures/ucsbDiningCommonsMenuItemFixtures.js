@@ -14,7 +14,7 @@ const ucsbDiningCommonsMenuItemFixtures = {
         },
         {
             "id": 2,
-            "diningCommonsCode": "Ortega",
+            "diningCommonsCode": "Carillo",
             "name": "Chicken Caesar Salad",
             "station": "Entrees"
         },
