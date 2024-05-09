@@ -1,4 +1,4 @@
-const ucsbArticlesFixtures = {
+const articlesFixtures = {
     oneArticle: {
         "id": 1,
         "title": "Fire scorches Huntington Park",
@@ -36,4 +36,4 @@ const ucsbArticlesFixtures = {
 };
 
 
-export { ucsbArticlesFixtures };
+export { articlesFixtures };
