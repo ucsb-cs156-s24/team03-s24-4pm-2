@@ -90,36 +90,39 @@ describe("RestaurantTable tests", () => {
     // arrange
     const currentUser = currentUserFixtures.userOnly;
 
-    // act
+    // act - render the component
     render(
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RestaurantTable restaurants={restaurantFixtures.threeRestaurants} currentUser={currentUser} />
+            <UCSBOrganizationTable ucsborganization={ucsbOrganizationFixtures.threeOrganizations} currentUser={currentUser} />
         </MemoryRouter>
-      </QueryClientProvider>
+    </QueryClientProvider>
     );
 
     // assert
     expectedHeaders.forEach((headerText) => {
-      const header = screen.getByText(headerText);
-      expect(header).toBeInTheDocument();
+        const header = screen.getByText(headerText);
+        expect(header).toBeInTheDocument();
     });
 
     expectedFields.forEach((field) => {
-      const header = screen.getByTestId(`${testId}-cell-row-0-col-${field}`);
-      expect(header).toBeInTheDocument();
+        const header = screen.getByTestId(`${testId}-cell-row-0-col-${field}`);
+        expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-name`)).toHaveTextContent("Cristino's Bakery");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent(ucsbOrganizationFixtures.threeOrganizations[0].orgCode);
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent(ucsbOrganizationFixtures.threeOrganizations[0].orgTranslationShort);
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`)).toHaveTextContent(ucsbOrganizationFixtures.threeOrganizations[0].orgTranslation);
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent(ucsbOrganizationFixtures.threeOrganizations[0].inactive);
 
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("Freebirds");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent(ucsbOrganizationFixtures.threeOrganizations[1].orgCode);
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent(ucsbOrganizationFixtures.threeOrganizations[1].orgTranslationShort);
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`)).toHaveTextContent(ucsbOrganizationFixtures.threeOrganizations[1].orgTranslation);
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-inactive`)).toHaveTextContent(ucsbOrganizationFixtures.threeOrganizations[1].inactive);
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
-  });
-
+});
 
   test("Edit button navigates to the edit page", async () => {
     // arrange
