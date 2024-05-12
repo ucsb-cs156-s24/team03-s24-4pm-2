@@ -95,7 +95,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     isInvalid={Boolean(errors.star)}
                     {...register("star", {
                         required: "Stars is required.",
-                        validate: value => parseInt(value) >= 1 && parseInt(value) <= 5 || "Must be a number 1-5."
+                        validate: value => ((parseInt(value) >= 1) && (parseInt(value) <= 5)) || ("Must be a number 1-5.")
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
