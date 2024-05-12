@@ -60,7 +60,7 @@ export default function ArticlesTable({ articles, currentUser }) {
     } 
 
     return <OurTable
-        data={dates}
+        data={articles}
         columns={columns}
         testid={"ArticlesTable"}
     />;
