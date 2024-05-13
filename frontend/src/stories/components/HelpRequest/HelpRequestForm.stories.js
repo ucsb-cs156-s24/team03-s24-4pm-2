@@ -1,6 +1,6 @@
 import React from 'react';
 import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm"
-import { helpRequestFixtures } from 'fixtures/HelpRequestFixtures';
+import { helpRequestFixtures } from 'fixtures/helpRequestFixtures';
 
 export default {
     title: 'components/HelpRequest/HelpRequestForm',

@@ -22,9 +22,6 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
-    // Stryker disable next-line all
-    const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
-
     const testIdPrefix = "HelpRequestForm";
 
 
@@ -123,7 +120,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             data-testid={testIdPrefix+"-explanation"}
                             id="explanation"
                             type="text"
-                            isInvalid={Boolean(errors.name)}
+                            isInvalid={Boolean(errors.explanation)}
                             {...register("explanation", {
                                 required: "Explanation is required."
                             })}
@@ -137,11 +134,11 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                 <Col>
                     <Form.Group className="mb-3" >
                         <Form.Label htmlFor="solved">Solved</Form.Label>
-                        <Form.Control
+                        <Form.Check
                             data-testid={testIdPrefix+"-solved"}
                             id="solved"
                             type="checkbox"
-                            isInvalid={Boolean(errors.name)}
+                            isInvalid={Boolean(errors.solved)}
                             {...register("solved", {
                                 required: "Solved field is required."
                             })}
