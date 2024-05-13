@@ -191,7 +191,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 verify(ucsbDiningCommonsMenuItemRepository, times(1)).findById(eq(7L));
                 Map<String, Object> json = responseToJson(response);
                 assertEquals("EntityNotFoundException", json.get("type"));
-                assertEquals("UCSBDiningCommonsMenuItem with id 7 not found", json.get("message"));
+                assertEquals("ucsbdiningcommonsmenuitem with id 7 not found", json.get("message"));
         }
 
 
@@ -222,7 +222,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 verify(ucsbDiningCommonsMenuItemRepository, times(1)).delete(any());
 
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("UCSBDiningCommonsMenuItem with id 15 deleted", json.get("message"));
+                assertEquals("ucsbdiningcommonsmenuitem with id 15 deleted", json.get("message"));
         }
         
         @WithMockUser(roles = { "ADMIN", "USER" })
@@ -242,7 +242,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 // assert
                 verify(ucsbDiningCommonsMenuItemRepository, times(1)).findById(15L);
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("UCSBDiningCommonsMenuItem with id 15 not found", json.get("message"));
+                assertEquals("ucsbdiningcommonsmenuitem with id 15 not found", json.get("message"));
         }
 
         // Tests for PUT /api/ucsbdiningcommonsmenuitem?id=... 
@@ -312,7 +312,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 // assert
                 verify(ucsbDiningCommonsMenuItemRepository, times(1)).findById(67L);
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("UCSBDiningCommonsMenuItem with id 67 not found", json.get("message"));
+                assertEquals("ucsbdiningcommonsmenuitem with id 67 not found", json.get("message"));
 
         }
 }
