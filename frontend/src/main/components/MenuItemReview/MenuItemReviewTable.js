@@ -35,7 +35,7 @@ export default function MenuItemReviewTable({
         },
 
         {
-            Header: 'MenuItem ID',
+            Header: 'Item Id',
             accessor: 'itemId',
         },
 
@@ -45,7 +45,7 @@ export default function MenuItemReviewTable({
         },
 
         {
-            Header: 'Reviewer Email',
+            Header: 'Email',
             accessor: 'reviewerEmail',
         },
 

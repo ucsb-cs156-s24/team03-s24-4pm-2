@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => ({
 describe("MenuItemReviewTable tests", () => {
     const queryClient = new QueryClient();
 
-    const expectedHeaders = ["id", "MenuItem ID", "Reviewer Email", "Stars", "Date Reviewed", "Comment"];
+    const expectedHeaders = ["id", "Item Id", "Email", "Stars", "Date Reviewed", "Comment"];
     const expectedFields = ["id", "itemId", "reviewerEmail", "star", "dateReviewed", "comments"];
     const testId = "MenuItemReviewTable";
 
@@ -231,7 +231,7 @@ describe("MenuItemReviewTable tests", () => {
         expect(screen.getByTestId(`${testId}-cell-row-2-col-dateReviewed`)).toHaveTextContent("2022-07-04T12:00:00");
         expect(screen.getByTestId(`${testId}-cell-row-2-col-comments`)).toHaveTextContent("Disgusting");
     
-        const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+        const deleteButton = screen.getByTestId(`${testId}-cell-row-1-col-Delete-button`);
         expect(deleteButton).toBeInTheDocument();
     
         // act - click the delete button
