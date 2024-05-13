@@ -18,7 +18,7 @@ function RecommedationRequestForm({ initialContents, submitAction, buttonLabel =
     const navigate = useNavigate();
 
     const testIdPrefix = "RecommendationRequestForm";
-    const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+    // const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
@@ -91,7 +91,8 @@ function RecommedationRequestForm({ initialContents, submitAction, buttonLabel =
                     id="dateRequested"
                     type="datetime-local"
                     isInvalid={Boolean(errors.dateRequested)}
-                    {...register("dateRequested", { required: true, pattern: isodate_regex })}
+                    // {...register("dateRequested", { required: true, pattern: isodate_regex })}
+                    {...register("dateRequested", { required: true})}
                 />
                 <Form.Control.Feedback type="invalid">
                     {errors.dateRequested && 'Date Requested is required. '}
@@ -106,7 +107,8 @@ function RecommedationRequestForm({ initialContents, submitAction, buttonLabel =
                     id="dateNeeded"
                     type="datetime-local"
                     isInvalid={Boolean(errors.dateNeeded)}
-                    {...register("dateNeeded", { required: true, pattern: isodate_regex })}
+                    // {...register("dateNeeded", { required: true, pattern: isodate_regex })}
+                    {...register("dateNeeded", { required: true })}
                 />
                 <Form.Control.Feedback type="invalid">
                     {errors.dateNeeded && 'Date Needed is required. '}
