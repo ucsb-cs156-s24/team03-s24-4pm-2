@@ -21,7 +21,7 @@ export default function RestaurantEditPage({storybook=false}) {
             }
         );
 
-    const objectToAxiosPutParams = (restaurant) => ({
+    const objectToAxiosPutParams = (items) => ({
         url: "/api/ucsbdiningcommonsmenuitem",
         method: "PUT",
         params: {
