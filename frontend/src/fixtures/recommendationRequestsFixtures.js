@@ -28,7 +28,7 @@ const recommendationRequestsFixtures = {
             "done": "true"
         },
         {
-            "id": 2,
+            "id": 3,
             "requesterEmail": "ldelplaya@ucsb.edu",
             "professorEmail": "richert@ucsb.edu",
             "explanation": "PhD CS Stanford",
