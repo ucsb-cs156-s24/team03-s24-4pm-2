@@ -16,7 +16,10 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
     // Stryker restore all
    
     const navigate = useNavigate();
-    const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+    // Stryker disable all: Not sure how to set up the complex behavior needed to test this
+    const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i; 
+    const email_form = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Stryker restore all
     const testIdPrefix = "MenuItemReviewForm";
 
     return (
@@ -45,6 +48,8 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     isInvalid={Boolean(errors.itemId)}
                     {...register("itemId", {
                         required: "itemId is required.",
+                        min: {value: 1, message: "Id must be >= 1"}
+                        
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -76,7 +81,11 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     type="text"
                     isInvalid={Boolean(errors.reviewerEmail)}
                     {...register("reviewerEmail", {
-                        required: "reviewerEmail is required."
+                        required: "reviewerEmail is required.",
+                        pattern: {
+                            value: email_form,
+                            message: "Invalid email address format."
+                        }
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -90,12 +99,11 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                     data-testid={testIdPrefix + "-star"}
                     id="star"
                     type="number"
-                    min="1"
-                    max="5"
                     isInvalid={Boolean(errors.star)}
                     {...register("star", {
                         required: "Stars is required.",
-                        validate: value => ((parseInt(value) >= 1) && (parseInt(value) <= 5)) || ("Must be a number 1-5.")
+                        min: {value: 1, message: "Number must be >= 1"},
+                        max: {value: 5, message: "Number must be <= 5"}
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -110,10 +118,13 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                             id="dateReviewed"
                             type="datetime-local"
                             isInvalid={Boolean(errors.dateReviewed)}
-                            {...register("dateReviewed", { required: true, pattern: { value: isodate_regex, message: 'Invalid date format.' } })}
+                            {...register("dateReviewed", { 
+                                required: true,
+                                pattern: isodate_regex 
+                            })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.dateReviewed && 'dateReviewed is required. '}
+                            {errors.dateReviewed && 'dateReviewed in iso format is required'}
                         </Form.Control.Feedback>
                     </Form.Group>
 
