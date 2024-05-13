@@ -161,8 +161,8 @@ describe("UCSBDiningCommonsMenuItemEditPage tests", () => {
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
             expect(axiosMock.history.put[0].data).toBe(JSON.stringify({
-                diningCommonsCode: 'Ortega',
-                name: "Chicken Caesar Salad",
+                diningCommonsCode: 'Ort',
+                name: "Salad",
                 station: "Entrees"
             })); // posted object
 
