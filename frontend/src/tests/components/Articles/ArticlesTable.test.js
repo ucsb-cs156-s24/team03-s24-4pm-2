@@ -29,8 +29,8 @@ describe("UserTable tests", () => {
 
     );
 
-    const expectedHeaders = ["id", "Title", "Url", "Explanation", "Email", "Date"];
-    const expectedFields = ["id", "title", "url", "explanation", "email", "date"];
+    const expectedHeaders = ["id", "Title", "Url", "Explanation", "Email", "Date Added"];
+    const expectedFields = ["id", "title", "url", "explanation", "email", "dateAdded"];
     const testId = "ArticlesTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -54,7 +54,7 @@ describe("UserTable tests", () => {
 
   });
 
-  test("Has the expected colum headers and content for adminUser", () => {
+  test("Has the expected column headers and content for adminUser", () => {
 
     const currentUser = currentUserFixtures.adminUser;
 
@@ -67,8 +67,8 @@ describe("UserTable tests", () => {
 
     );
 
-    const expectedHeaders = ["id", "Title", "Url", "Explanation", "Email", "Date"];
-    const expectedFields = ["id", "title", "url", "explanation", "email", "date"];
+    const expectedHeaders = ["id", "Title", "Url", "Explanation", "Email", "Date Added"];
+    const expectedFields = ["id", "title", "url", "explanation", "email", "dateAdded"];
     const testId = "ArticlesTable";
 
     expectedHeaders.forEach((headerText) => {

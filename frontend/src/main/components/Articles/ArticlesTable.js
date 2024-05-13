@@ -49,7 +49,7 @@ export default function ArticlesTable({ articles, currentUser }) {
             accessor: 'email',
         },
         {
-            Header: 'Date',
+            Header: 'Date Added',
             accessor: 'dateAdded',
         }
     ];
