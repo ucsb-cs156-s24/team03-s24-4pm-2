@@ -57,12 +57,12 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                         <Form.Control
                             data-testid={testIdPrefix+"-requesterEmail"}
                             id="requesterEmail"
-                            type="email"
+                            type="text"
                             isInvalid={Boolean(errors.requesterEmail)}
-                            {...register("requesterEmail", { required: true})}
+                            {...register("requesterEmail", { required: 'Requester email is required.'})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.requesterEmail && 'Requester email is required. '}
+                            {errors.requesterEmail?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -74,7 +74,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="teamId"
                             type="text"
                             isInvalid={Boolean(errors.teamId)}
-                            {...register("requesterEmail", { required: true})}
+                            {...register("teamId", { required: true})}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.teamId && 'Team Id is required.'}
@@ -89,10 +89,10 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="tableOrBreakoutRoom"
                             type="text"
                             isInvalid={Boolean(errors.tableOrBreakoutRoom)}
-                            {...register("tableOrBreakoutRoom", { required: true})}
+                            {...register("tableOrBreakoutRoom", { required: 'Table Or Breakout Room is required.'})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.tableOrBreakoutRoom && 'Table Or Breakout Room is required. '}
+                            {errors.tableOrBreakoutRoom && 'Table Or Breakout Room is required.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -106,10 +106,10 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="requestTime"
                             type="datetime-local"
                             isInvalid={Boolean(errors.requestTime)}
-                            {...register("requestTime", { required: true, pattern: isodate_regex })}
+                            {...register("requestTime", { required: 'Request Time is required.', pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.requestTime && 'requestTime is required. '}
+                            {errors.requestTime && 'Request Time is required.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -125,7 +125,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             type="text"
                             isInvalid={Boolean(errors.name)}
                             {...register("explanation", {
-                                required: "explanation is required."
+                                required: "Explanation is required."
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
@@ -143,7 +143,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             type="checkbox"
                             isInvalid={Boolean(errors.name)}
                             {...register("solved", {
-                                required: "This field is required."
+                                required: "Solved field is required."
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
