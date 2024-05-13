@@ -1,4 +1,4 @@
-mport React from 'react';
+import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { recommendationRequestsFixtures } from "fixtures/recommendationRequestsFixtures";
