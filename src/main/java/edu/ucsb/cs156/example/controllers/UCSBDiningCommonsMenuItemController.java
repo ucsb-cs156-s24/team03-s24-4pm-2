@@ -31,7 +31,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
     @Autowired
     UCSBDiningCommonsMenuItemRepository ucsbDiningCommonsMenuItemRepository;
 
-    @Operation(summary= "List all ucsb dining commons menu items")
+    @Operation(summary= "List all ucsbdiningcommonsmenuitems")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
     public Iterable<UCSBDiningCommonsMenuItem> allUCSBDiningCommonMenuItem() {
@@ -41,7 +41,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
 
     //
 
-    @Operation(summary= "Create a new commons menu items")
+    @Operation(summary= "Create a new ucsbdiningcommonsmenuitem")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public UCSBDiningCommonsMenuItem postCommonsMenuItem(
@@ -62,7 +62,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
         return savedCommonsMenuItems;
     }
 
-    @Operation(summary= "Get a single commons menu item")
+    @Operation(summary= "Get a single ucsbdiningcommonsmenuitem")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
     public UCSBDiningCommonsMenuItem getById(
@@ -73,7 +73,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
         return commonsmenuitem;
     }
 
-    @Operation(summary= "Delete a UCSBDiningCommonsMenuItem")
+    @Operation(summary= "Delete a ucsbdiningcommonsmenuitem")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
     public Object deleteCommonsMenuItem(
@@ -82,10 +82,10 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
                 .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommonsMenuItem.class, id));
 
         ucsbDiningCommonsMenuItemRepository.delete(commonsmenuitem);
-        return genericMessage("UCSBDiningCommonsMenuItem with id %s deleted".formatted(id));
+        return genericMessage("ucsbdiningcommonsmenuitem with id %s deleted".formatted(id));
     }
 
-    @Operation(summary= "Update a single commons menu item")
+    @Operation(summary= "Update a single ucsbdiningcommonsmenuitem")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public UCSBDiningCommonsMenuItem updateCommonsMenuItem(

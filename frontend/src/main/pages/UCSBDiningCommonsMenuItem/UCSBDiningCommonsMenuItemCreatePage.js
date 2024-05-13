@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 export default function UCSBDiningCommonsMenuItemCreatePage({storybook=false}) {
 
   const objectToAxiosParams = (diningcommonsmenuitem) => ({
-    url: "/api/diningcommonsmenuitem/post",
+    url: "/api/ucsbdiningcommonsmenuitem/post",
     method: "POST",
     params: {
      id:diningcommonsmenuitem.id,

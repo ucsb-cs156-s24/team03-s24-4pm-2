@@ -67,7 +67,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
             </QueryClientProvider>
         );
         expect(await screen.findByTestId(`${testId}-cancel`)).toBeInTheDocument();
-        const cancelButton = screen.getByTestId(`${testId}-cancel`);
+        const cancelButton = screen.getByTestId("UCSBDiningCommonsMenuItemForm-cancel");//`${testId}-cancel`);
 
         fireEvent.click(cancelButton);
 
@@ -84,7 +84,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         );
 
         expect(await screen.findByText(/Create/)).toBeInTheDocument();
-        const submitButton = screen.getByTestId(`${testId}-submit`);
+        const submitButton = screen.getByTestId("UCSBDiningCommonsMenuItemForm-submit"); //`${testId}-submit`);
         fireEvent.click(submitButton);
 
         await screen.findByText(/Name is required/);

@@ -62,7 +62,7 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
             station: "Entrees"
         };
 
-axiosMock.onPost("/api/diningcommonsmenuitem/post").reply(202, diningCommonMenuItem);
+axiosMock.onPost("/api/ucsbdiningcommonsmenuitem/post").reply(202, diningCommonMenuItem);
 
         render(
             <QueryClientProvider client={queryClient}>
