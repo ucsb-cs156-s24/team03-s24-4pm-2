@@ -51,6 +51,7 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
+              
             </Nav>
             {
               currentUser && currentUser.loggedIn && (
@@ -59,6 +60,7 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   <Nav.Link as={Link} to="/ucsbdates">UCSB Dates</Nav.Link>
                   <Nav.Link as={Link} to="/recommendationrequest">Recommendation Requests</Nav.Link>
                   <Nav.Link as={Link} to="/placeholder">Placeholder</Nav.Link>
+                  <Nav.Link as={Link} to="/diningcommonsmenuitem">UCSBDiningCommonsMenuItem</Nav.Link>
                   <Nav.Link as={Link} to="/menuitemreviews">MenuItemReview</Nav.Link>
                 </>
               )
