@@ -19,6 +19,9 @@ import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
+import RecommendationRequestsIndexPage from "main/pages/RecommendationRequests/RecommendationRequestsIndexPage";
+import RecommendationRequestsCreatePage from "main/pages/RecommendationRequests/RecommendationRequestsCreatePage";
+import RecommendationRequestsEditPage from "main/pages/RecommendationRequests/RecommendationRequestsEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -83,6 +86,21 @@ function App() {
          {
           hasRole(currentUser, "ROLE_USER") && (
             <>
+              <Route exact path="/recommendationrequest" element={<RecommendationRequestsIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/recommendationrequest/edit/:id" element={<RecommendationRequestsEditPage />} />
+              <Route exact path="/recommendationrequest/create" element={<RecommendationRequestsCreatePage />} />
+            </>
+          )
+        }
+         {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
               <Route exact path="/placeholder" element={<PlaceholderIndexPage />} />
             </>
           )
@@ -101,3 +119,4 @@ function App() {
 }
 
 export default App;
+
