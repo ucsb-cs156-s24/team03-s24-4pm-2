@@ -191,7 +191,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 verify(ucsbDiningCommonsMenuItemRepository, times(1)).findById(eq(7L));
                 Map<String, Object> json = responseToJson(response);
                 assertEquals("EntityNotFoundException", json.get("type"));
-                assertEquals("ucsbdiningcommonsmenuitem with id 7 not found", json.get("message"));
+                assertEquals("UCSBDiningCommonsMenuItem with id 7 not found", json.get("message"));
         }
 
 
