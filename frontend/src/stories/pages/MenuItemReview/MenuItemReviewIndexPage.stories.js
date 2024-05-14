@@ -1,18 +1,17 @@
-
 import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { recommendationRequestsFixtures } from "fixtures/recommendationRequestsFixtures";
+import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
 import { rest } from "msw";
 
-import RecommendationRequestsIndexPage from "main/pages/RecommendationRequests/RecommendationRequestsIndexPage";
+import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
 
 export default {
-    title: 'pages/RecommendationRequests/RecommendationRequestsIndexPage',
-    component: RecommendationRequestsIndexPage
+    title: 'pages/MenuItemReview/MenuItemReviewIndexPage',
+    component: MenuItemReviewIndexPage
 };
 
-const Template = () => <RecommendationRequestsIndexPage storybook={true}/>;
+const Template = () => <MenuItemReviewIndexPage storybook={true}/>;
 
 export const Empty = Template.bind({});
 Empty.parameters = {
@@ -23,7 +22,7 @@ Empty.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/recommendationRequest/all', (_req, res, ctx) => {
+        rest.get('/api/menuitemreview/all', (_req, res, ctx) => {
             return res(ctx.json([]));
         }),
     ]
@@ -39,8 +38,8 @@ ThreeItemsOrdinaryUser.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/recommendationRequest/all', (_req, res, ctx) => {
-            return res(ctx.json(recommendationRequestsFixtures.threeRecommendationRequests));
+        rest.get('/api/menuitemreview/all', (_req, res, ctx) => {
+            return res(ctx.json(menuItemReviewFixtures.threeReviews));
         }),
     ],
 }
@@ -55,13 +54,12 @@ ThreeItemsAdminUser.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/recommendationRequest/all', (_req, res, ctx) => {
-            return res(ctx.json(recommendationRequestsFixtures.threeRecommendationRequests));
+        rest.get('/api/menuitemreview/all', (_req, res, ctx) => {
+            return res(ctx.json(menuItemReviewFixtures.threeReviews));
         }),
-        rest.delete('/api/recommendationRequest', (req, res, ctx) => {
+        rest.delete('/api/menuitemreview', (req, res, ctx) => {
             window.alert("DELETE: " + JSON.stringify(req.url));
             return res(ctx.status(200),ctx.json({}));
         }),
     ],
-
 }
