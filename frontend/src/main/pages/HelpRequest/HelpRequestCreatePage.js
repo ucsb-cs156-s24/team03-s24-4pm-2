@@ -27,7 +27,7 @@ export default function HelpRequestCreatePage({storybook=false}) {
     objectToAxiosParams,
      { onSuccess }, 
      // Stryker disable next-line all : hard to set up test for caching
-     ["/api/helprequest/all"] // mutation makes this key stale so that pages relying on it reload
+     ["/api/HelpRequest/all"] // mutation makes this key stale so that pages relying on it reload
      );
 
   const { isSuccess } = mutation

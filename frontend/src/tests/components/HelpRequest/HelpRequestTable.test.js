@@ -97,8 +97,8 @@ describe("HelpRequestTable tests", () => {
         </MemoryRouter>
       </QueryClientProvider>
     );
-    const expectedHeaders = ["id", "RequesterEmail", "TableOrBreakoutRoom", "RequestTime", "Explanation", "Solved"];
-    const expectedFields = ["id", "requesterEmail", "tableOrBreakoutRoom", "requestTime", "explanation", "solved"];
+    const expectedHeaders = ["id", "RequesterEmail", "TeamId", "TableOrBreakoutRoom", "RequestTime", "Explanation", "Solved"];
+    const expectedFields = ["id", "requesterEmail", "teamId", "tableOrBreakoutRoom", "requestTime", "explanation", "solved"];
     const testId = "HelpRequestTable";
     // assert
     expectedHeaders.forEach((headerText) => {
