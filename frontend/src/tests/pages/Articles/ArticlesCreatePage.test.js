@@ -98,7 +98,7 @@ describe("ArticlesCreatePage tests", () => {
     fireEvent.change(titleInput, { target: { value: "Article on Subway 2" } })
     fireEvent.change(urlInput, { target: { value: "cs156.com" } })
     fireEvent.change(explanationInput, { target: { value: "all about subway 2" } })
-    fireEvent.change(emailInput, { target: { value: "kflippo@email" } })
+    fireEvent.change(emailInput, { target: { value: "kflippo@email.com" } })
     fireEvent.change(dateAddedInput, { target: { value: '2021-07-04T12:01:10' } })
     fireEvent.click(createButton);
 
@@ -108,7 +108,7 @@ describe("ArticlesCreatePage tests", () => {
         title: "Article on Subway 2",
         url: "cs156.com",
         explanation: "all about subway 2",
-        email: "kflippo@email",
+        email: "kflippo@email.com",
         dateAdded: '2021-07-04T12:01:10.000'
     });
 

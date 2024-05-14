@@ -108,6 +108,27 @@ describe("ArticlesForm tests", () => {
 
     });
 
+    test("invalid email format", async () => {
+        const mockSubmitAction = jest.fn();
+        render(
+            <Router  >
+                <ArticlesForm submitAction={mockSubmitAction} />
+            </Router>
+        );
+        await screen.findByTestId("ArticlesForm-dateAdded");
+
+        const emailGet = screen.getByTestId("ArticlesForm-email");
+        const submitButton = screen.getByTestId("ArticlesForm-submit");
+
+        fireEvent.change(emailGet, { target: {value: "badformat" } });
+        fireEvent.click(submitButton);
+
+        await waitFor(() => {
+            expect(screen.getByText(/Invalid email address format/)).toBeInTheDocument();
+        });
+    });
+    
+
 
     test("that navigate(-1) is called when Cancel is clicked", async () => {
 

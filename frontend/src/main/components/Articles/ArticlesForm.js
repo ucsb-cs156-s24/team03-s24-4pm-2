@@ -21,6 +21,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
 
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+    const email_form = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     return (
 
@@ -132,7 +133,11 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                             type="text"
                             isInvalid={Boolean(errors.email)}
                             {...register("email", {
-                                required: "Email is required."
+                                required: "Email is required.",
+                                pattern: {
+                                    value: email_form,
+                                    message: "Invalid email address format"
+                                }
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
