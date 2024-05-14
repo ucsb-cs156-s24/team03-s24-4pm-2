@@ -41,7 +41,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
 
     //
 
-    @Operation(summary= "Create a new ucsbdiningcommonsmenuitem")
+    @Operation(summary= "Create a new UCSBDiningCommonsMenuItem")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public UCSBDiningCommonsMenuItem postCommonsMenuItem(
@@ -62,7 +62,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
         return savedCommonsMenuItems;
     }
 
-    @Operation(summary= "Get a single ucsbdiningcommonsmenuitem")
+    @Operation(summary= "Get a single UCSBDiningCommonsMenuItem")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
     public UCSBDiningCommonsMenuItem getById(
@@ -73,7 +73,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
         return commonsmenuitem;
     }
 
-    @Operation(summary= "Delete a ucsbdiningcommonsmenuitem")
+    @Operation(summary= "Delete a UCSBDiningCommonsMenuItem")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
     public Object deleteCommonsMenuItem(
@@ -82,10 +82,10 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
                 .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommonsMenuItem.class, id));
 
         ucsbDiningCommonsMenuItemRepository.delete(commonsmenuitem);
-        return genericMessage("ucsbdiningcommonsmenuitem with id %s deleted".formatted(id));
+        return genericMessage("UCSBDiningCommonsMenuItem with id %s deleted".formatted(id));
     }
 
-    @Operation(summary= "Update a single ucsbdiningcommonsmenuitem")
+    @Operation(summary= "Update a single UCSBDiningCommonsMenuItem")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public UCSBDiningCommonsMenuItem updateCommonsMenuItem(

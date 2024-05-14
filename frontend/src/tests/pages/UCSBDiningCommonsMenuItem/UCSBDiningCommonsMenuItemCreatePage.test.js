@@ -104,7 +104,7 @@ axiosMock.onPost("/api/ucsbdiningcommonsmenuitem/post").reply(202, diningCommonM
         });
 
         // assert - check that the toast was called with the expected message
-        expect(mockToast).toBeCalledWith("New diningcommonsmenuitem Created - id: 3 name: Chicken Caesar Salad");
+        expect(mockToast).toBeCalledWith("New UCSBDiningCommonsMenuItem Created - id: 3 name: Chicken Caesar Salad");
         expect(mockNavigate).toBeCalledWith({ "to": "/ucsbdiningcommonsmenuitem" });
 
     });
