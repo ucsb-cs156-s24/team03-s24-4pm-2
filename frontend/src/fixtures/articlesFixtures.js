@@ -12,7 +12,7 @@ const articlesFixtures = {
             "id": 1,
             "title": "Fire scorches Huntington Park",
             "url": "https://www.latimes.com/california/story/2024-05-01/fire-scorches-huntington-park-fire-station-but-no-injuries-are-reported",
-            "explanation": " fire station, but no injuries are reported",
+            "explanation": "big fire",
             "email": "gaucho@gmail.com",
             "dateAdded": "2022-01-02T12:00:00"
         },

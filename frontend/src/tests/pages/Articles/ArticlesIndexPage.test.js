@@ -88,7 +88,7 @@ describe("ArticlesIndexPage tests", () => {
         const url = screen.getByText("https://www.latimes.com/california/story/2024-05-01/fire-scorches-huntington-park-fire-station-but-no-injuries-are-reported");
         expect(url).toBeInTheDocument();
 
-        const explanation = screen.getByText(" fire station, but no injuries are reported");
+        const explanation = screen.getByText("big fire");
         expect(explanation).toBeInTheDocument();
 
         const email = screen.getByText("gaucho@gmail.com");
@@ -142,7 +142,7 @@ describe("ArticlesIndexPage tests", () => {
 
         await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
 
-        expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
+        expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
 
 
         const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
@@ -155,7 +155,7 @@ describe("ArticlesIndexPage tests", () => {
         await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
         expect(axiosMock.history.delete[0].url).toBe("/api/articles");
         expect(axiosMock.history.delete[0].url).toBe("/api/articles");
-        expect(axiosMock.history.delete[0].params).toEqual({ id: 2 });
+        expect(axiosMock.history.delete[0].params).toEqual({ id: 1 });
     });
 
 });
