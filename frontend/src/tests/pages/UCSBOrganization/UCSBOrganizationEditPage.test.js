@@ -7,7 +7,6 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-
 import mockConsole from "jest-mock-console";
 
 const mockToast = jest.fn();
@@ -81,23 +80,23 @@ describe("UCSBOrganizationEditPage tests", () => {
                 inactive: false
             });
             axiosMock.onPut('/api/ucsborganization').reply(200, {
-                orgCode: 'SKY',
-                orgTranslationShort: 'SKYDIVING CLUB',
+                orgCode: "SKY",
+                orgTranslationShort: "SKYDIVING CLUB",
                 orgTranslation: "SKYDIVING CLUB AT UCSB",
                 inactive: true
             });
         });
 
         const queryClient = new QueryClient();
-        test("renders without crashing", () => {
-            render(
-                <QueryClientProvider client={queryClient}>
-                    <MemoryRouter>
-                        <UCSBOrganizationEditPage />
-                    </MemoryRouter>
-                </QueryClientProvider>
-            );
-        });
+        // test("renders without crashing", () => {
+        //     render(
+        //         <QueryClientProvider client={queryClient}>
+        //             <MemoryRouter>
+        //                 <UCSBOrganizationEditPage />
+        //             </MemoryRouter>
+        //         </QueryClientProvider>
+        //     );
+        // });
 
         test("Is populated with the data provided", async () => {
 
@@ -111,17 +110,38 @@ describe("UCSBOrganizationEditPage tests", () => {
 
             await screen.findByTestId("UCSBOrganizationForm-orgTranslationShort");
 
-            const orgCode = screen.getByTestId("UCSBOrganizationForm-orgCode");
-            const orgTranslationShort = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
-            const orgTranslation = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
-            const inactive = screen.getByTestId("UCSBOrganizationForm-inactive");
+            const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
+            const orgTranslationShortField = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
+            const orgTranslationField = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
+            const inactiveField = screen.getByTestId("UCSBOrganizationForm-inactive");
             const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
 
-            expect(orgCode).toHaveValue("SKY");
-            expect(orgTranslationShort).toHaveValue("SKYDIVING CLUB");
-            expect(orgTranslation).toHaveValue("SKYDIVING CLUB AT UCSB");
-            expect(inactive).not.toBeChecked();
+            expect(orgCodeField).toBeInTheDocument();
+            expect(orgCodeField).toHaveValue("SKY");
+            expect(orgTranslationShortField).toBeInTheDocument();
+            expect(orgTranslationShortField).toHaveValue("SKYDIVING CLUB");
+            expect(orgTranslationField).toBeInTheDocument();
+            expect(orgTranslationField).toHaveValue("SKYDIVING CLUB AT UCSB");
+            expect(inactiveField).not.toBeChecked();
             expect(submitButton).toBeInTheDocument();
+
+            fireEvent.change(orgTranslationShortField, { target: { value: 'SKYDIVING CLUB' } });
+            fireEvent.change(orgTranslationField, { target: { value: 'SKYDIVING CLUB AT UCSB' } });
+            fireEvent.click(submitButton);
+
+            await waitFor(() => expect(mockToast).toBeCalled());
+            expect(mockToast).toBeCalledWith("UCSBOrganization Updated - orgCode: SKY orgTranslationShort: SKYDIVING CLUB");
+            
+            expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
+
+            expect(axiosMock.history.put.length).toBe(1); // times called
+            expect(axiosMock.history.put[0].params).toEqual({ orgCode: "SKY" });
+            expect(axiosMock.history.put[0].data).toBe(JSON.stringify({
+                orgCode: "SKY",
+                orgTranslationShort: "SKYDIVING CLUB",
+                orgTranslation: "SKYDIVING CLUB AT UCSB",
+                inactive: false
+            })); // posted object
         });
 
         test("Changes when you click Update", async () => {
