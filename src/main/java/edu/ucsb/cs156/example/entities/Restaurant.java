@@ -1,3 +1,4 @@
+
 package edu.ucsb.cs156.example.entities;
 
 import javax.persistence.Entity;
@@ -26,4 +27,5 @@ public class Restaurant {
 
   private String name;
   private String description;
+
 }

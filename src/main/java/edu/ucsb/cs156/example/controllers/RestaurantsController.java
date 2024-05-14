@@ -1,3 +1,4 @@
+
 package edu.ucsb.cs156.example.controllers;
 
 import edu.ucsb.cs156.example.entities.Restaurant;
@@ -122,4 +123,5 @@ public class RestaurantsController extends ApiController {
 
         return restaurant;
     }
+
 }
