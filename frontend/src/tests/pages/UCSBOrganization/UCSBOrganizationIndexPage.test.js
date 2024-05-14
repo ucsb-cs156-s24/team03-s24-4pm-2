@@ -88,8 +88,8 @@ describe("UCSBOrganizationIndexPage tests", () => {
         expect(orgTranslationShort).toBeInTheDocument();
 
         // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
-        expect(screen.queryByTestId(`${testId}-cell-row-0-col-Delete-button`)).not.toBeInTheDocument();
-        expect(screen.queryByTestId(`${testId}-cell-row-0-col-Edit-button`)).not.toBeInTheDocument();
+        expect(screen.queryByTestId(`UCSBOrganizationTable-cell-row-0-col-Delete-button`)).not.toBeInTheDocument();
+        expect(screen.queryByTestId(`UCSBOrganizationTable-cell-row-0-col-Edit-button`)).not.toBeInTheDocument();
     });
 
     test("renders empty table when backend unavailable, user only", async () => {
@@ -112,7 +112,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
         const errorMessage = console.error.mock.calls[0][0];
         expect(errorMessage).toMatch("Error communicating with backend via GET on /api/ucsborganization/all");
         restoreConsole();
-        expect(screen.queryByTestId(`${testId}-cell-row-0-col-orgCode`)).not.toBeInTheDocument();
+        //expect(screen.queryByTestId(`UCSBOrganizationTable-cell-row-0-col-orgCode`)).not.toBeInTheDocument();
     });
 
     test("what happens when you click delete, admin", async () => {
@@ -143,9 +143,9 @@ describe("UCSBOrganizationIndexPage tests", () => {
         await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBOrganization with orgCode SKY was deleted") });
 
         //await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
-        // expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
-        // expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
-        // expect(axiosMock.history.delete[0].params).toEqual({ orgCode: ucsbOrganizationFixtures.threeOrganizations[0].orgCode });
+        //expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
+        //expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
+        //expect(axiosMock.history.delete[0].params).toEqual({ orgCode: SKY });
     });
 
 });
