@@ -36,15 +36,15 @@ export default function UCSBOrganizationTable(
             accessor: 'orgCode', // accessor is the "key" in the data
         },
         {
-            Header: 'orgTranslationShort',
+            Header: 'OrgTranslationShort',
             accessor: 'orgTranslationShort',
         },
         {
-            Header: 'orgTranslation',
+            Header: 'OrgTranslation',
             accessor: 'orgTranslation',
         },
         {
-            Header: 'inactive',
+            Header: 'Inactive',
             id: 'inactive',
             accessor: row => String(row.inactive),
         }
