@@ -31,7 +31,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
     @Autowired
     UCSBDiningCommonsMenuItemRepository ucsbDiningCommonsMenuItemRepository;
 
-    @Operation(summary= "List all ucsb dining commons menu items")
+    @Operation(summary= "List all ucsbdiningcommonsmenuitems")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
     public Iterable<UCSBDiningCommonsMenuItem> allUCSBDiningCommonMenuItem() {
@@ -41,7 +41,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
 
     //
 
-    @Operation(summary= "Create a new commons menu items")
+    @Operation(summary= "Create a new UCSBDiningCommonsMenuItem")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public UCSBDiningCommonsMenuItem postCommonsMenuItem(
@@ -62,7 +62,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
         return savedCommonsMenuItems;
     }
 
-    @Operation(summary= "Get a single commons menu item")
+    @Operation(summary= "Get a single UCSBDiningCommonsMenuItem")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
     public UCSBDiningCommonsMenuItem getById(
@@ -85,7 +85,7 @@ public class UCSBDiningCommonsMenuItemController extends ApiController {
         return genericMessage("UCSBDiningCommonsMenuItem with id %s deleted".formatted(id));
     }
 
-    @Operation(summary= "Update a single commons menu item")
+    @Operation(summary= "Update a single UCSBDiningCommonsMenuItem")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public UCSBDiningCommonsMenuItem updateCommonsMenuItem(

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -63,4 +62,5 @@ ThreeItemsAdminUser.parameters = {
             return res(ctx.status(200),ctx.json({}));
         }),
     ],
+
 }
