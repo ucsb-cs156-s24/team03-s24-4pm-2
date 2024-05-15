@@ -1,4 +1,3 @@
-
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -21,7 +20,6 @@ jest.mock('react-toastify', () => {
     };
 });
 
-
 describe("UCSBOrganizationIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
@@ -34,7 +32,6 @@ describe("UCSBOrganizationIndexPage tests", () => {
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
     };
-
 
     const setupAdminUser = () => {
         axiosMock.reset();
@@ -125,7 +122,6 @@ describe("UCSBOrganizationIndexPage tests", () => {
         axiosMock.onDelete("/api/ucsborganization").reply(200, "UCSBOrganization with orgCode SKY was deleted");
 
 
-
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -150,7 +146,6 @@ describe("UCSBOrganizationIndexPage tests", () => {
         //expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
         //expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
         //expect(axiosMock.history.delete[0].params).toEqual({ orgCode: SKY });
-
     });
 
 });
