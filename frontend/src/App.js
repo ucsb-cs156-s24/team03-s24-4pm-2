@@ -85,16 +85,7 @@ function App() {
             </>
           )
         }
-        {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-
-
-              <Route exact path="/articles" element={<ArticlesIndexPage />} />
-
-            </>
-          )
-        }
+        
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
@@ -132,15 +123,6 @@ function App() {
             <>
               <Route exact path="/menuitemreviews" element={<MenuItemReviewIndexPage />} />
 
-            </>
-          )
-        }
-        {
-          hasRole(currentUser, "ROLE_ADMIN") && (
-            <>
-
-              <Route exact path="/articles/edit/:id" element={<ArticlesEditPage />} />
-              <Route exact path="/articles/create" element={<ArticlesCreatePage />} />
             </>
           )
         }
