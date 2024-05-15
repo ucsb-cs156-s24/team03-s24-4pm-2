@@ -110,7 +110,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
 
         // assert - check that the toast was called with the expected message
         expect(mockToast).toBeCalledWith("New UCSBOrganization Created - orgCode: ZPR");
-        expect(mockNavigate).toBeCalledWith({ "to": "/UCSBOrganization" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
 
     });
 });

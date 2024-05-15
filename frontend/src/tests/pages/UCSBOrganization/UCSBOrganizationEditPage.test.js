@@ -132,7 +132,7 @@ describe("UCSBOrganizationEditPage tests", () => {
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("UCSBOrganization Updated - orgCode: SKY orgTranslationShort: SKYDIVING CLUB");
             
-            expect(mockNavigate).toBeCalledWith({ "to": "/UCSBOrganization" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ orgCode: "SKY" });
@@ -176,7 +176,7 @@ describe("UCSBOrganizationEditPage tests", () => {
 
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("UCSBOrganization Updated - orgCode: SKY orgTranslationShort: SKYDIVING CLUB");
-            expect(mockNavigate).toBeCalledWith({ "to": "/UCSBOrganization" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
         });
 
        

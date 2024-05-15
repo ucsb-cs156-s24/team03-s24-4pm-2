@@ -57,7 +57,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
             expect(screen.getByText(/Create UCSB Organization/)).toBeInTheDocument();
         });
         const button = screen.getByText(/Create UCSB Organization/);
-        expect(button).toHaveAttribute("href", "/UCSBOrganization/create");
+        expect(button).toHaveAttribute("href", "/ucsborganization/create");
         expect(button).toHaveAttribute("style", "float: right;");
     });
 
@@ -119,7 +119,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/UCSBOrganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
-        axiosMock.onDelete("/api/UCSBOrganization").reply(200, "UCSBOrganization with orgCode SKY was deleted");
+        // axiosMock.onDelete("/api/UCSBOrganization").reply(200, "UCSBOrganization with orgCode SKY was deleted");
 
 
         render(
