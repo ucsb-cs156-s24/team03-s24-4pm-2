@@ -100,3 +100,4 @@ public class RestaurantIT {
                 assertEquals(expectedJson, responseString);
         }
 }
+

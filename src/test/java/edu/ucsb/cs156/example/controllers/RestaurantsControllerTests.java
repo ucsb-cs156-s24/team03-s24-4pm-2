@@ -295,3 +295,4 @@ public class RestaurantsControllerTests extends ControllerTestCase {
 
         }
 }
+

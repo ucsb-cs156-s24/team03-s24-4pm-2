@@ -122,4 +122,3 @@ public class RestaurantsController extends ApiController {
 
         return restaurant;
     }
-}
