@@ -1,4 +1,3 @@
-
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -44,7 +43,7 @@ describe("UCSBOrganizationEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/ucsborganization", { params: { orgCode: "SKY" } }).timeout();
+            axiosMock.onGet("/api/UCSBOrganization", { params: { orgCode: "SKY" } }).timeout();
         });
 
         const queryClient = new QueryClient();
@@ -74,13 +73,13 @@ describe("UCSBOrganizationEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/ucsborganization", { params: { orgCode: "SKY" } }).reply(200, {
+            axiosMock.onGet("/api/UCSBOrganization", { params: { orgCode: "SKY" } }).reply(200, {
                 orgCode: "SKY",
                 orgTranslationShort: "SKYDIVING CLUB",
                 orgTranslation: "SKYDIVING CLUB AT UCSB",
                 inactive: false
             });
-            axiosMock.onPut('/api/ucsborganization').reply(200, {
+            axiosMock.onPut('/api/UCSBOrganization').reply(200, {
                 orgCode: "SKY",
                 orgTranslationShort: "SKYDIVING CLUB",
                 orgTranslation: "SKYDIVING CLUB AT UCSB",
@@ -133,7 +132,7 @@ describe("UCSBOrganizationEditPage tests", () => {
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("UCSBOrganization Updated - orgCode: SKY orgTranslationShort: SKYDIVING CLUB");
             
-            expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/UCSBOrganization" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ orgCode: "SKY" });
@@ -177,7 +176,7 @@ describe("UCSBOrganizationEditPage tests", () => {
 
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("UCSBOrganization Updated - orgCode: SKY orgTranslationShort: SKYDIVING CLUB");
-            expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/UCSBOrganization" });
         });
 
        

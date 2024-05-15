@@ -52,7 +52,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
         );
     });
 
-    test("on submit, makes request to backend, and redirects to /ucsborganization", async () => {
+    test("on submit, makes request to backend, and redirects to /UCSBOrganization", async () => {
 
         const queryClient = new QueryClient();
         const ucsborganization = {
@@ -110,7 +110,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
 
         // assert - check that the toast was called with the expected message
         expect(mockToast).toBeCalledWith("New UCSBOrganization Created - orgCode: ZPR");
-        expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/UCSBOrganization" });
 
     });
 });
