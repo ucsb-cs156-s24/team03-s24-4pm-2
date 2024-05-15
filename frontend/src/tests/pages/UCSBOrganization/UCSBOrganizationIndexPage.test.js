@@ -43,7 +43,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
     test("Renders with Create Button for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/UCSBOrganization/all").reply(200, []);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -64,7 +64,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
     test("renders three orgs correctly for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/UCSBOrganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -95,7 +95,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
     test("renders empty table when backend unavailable, user only", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/UCSBOrganization/all").timeout();
+        axiosMock.onGet("/api/ucsborganization/all").timeout();
 
         const restoreConsole = mockConsole();
 
@@ -110,7 +110,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(1); });
         
         const errorMessage = console.error.mock.calls[0][0];
-        expect(errorMessage).toMatch("Error communicating with backend via GET on /api/UCSBOrganization/all");
+        expect(errorMessage).toMatch("Error communicating with backend via GET on /api/ucsborganization/all");
         restoreConsole();
         //expect(screen.queryByTestId(`UCSBOrganizationTable-cell-row-0-col-orgCode`)).not.toBeInTheDocument();
     });
@@ -118,9 +118,8 @@ describe("UCSBOrganizationIndexPage tests", () => {
     test("what happens when you click delete, admin", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/UCSBOrganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
-        // axiosMock.onDelete("/api/UCSBOrganization").reply(200, "UCSBOrganization with orgCode SKY was deleted");
-
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
+        axiosMock.onDelete("/api/ucsborganization").reply(200, "UCSBOrganization with orgCode SKY was deleted");
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -142,10 +141,10 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
         await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBOrganization with orgCode SKY was deleted") });
 
-        //await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
-        //expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
-        //expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
-        //expect(axiosMock.history.delete[0].params).toEqual({ orgCode: SKY });
+        // await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
+        // expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
+        // expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
+        // expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "SKY" });
     });
 
 });

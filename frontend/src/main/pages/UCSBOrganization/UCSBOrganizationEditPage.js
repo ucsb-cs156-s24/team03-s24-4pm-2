@@ -11,10 +11,10 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
   const { data: ucsbOrganization, _error, _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
-      [`/api/UCSBOrganization?orgCode=${orgCode}`],
+      [`/api/ucsborganization?orgCode=${orgCode}`],
       {  // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
         method: "GET",
-        url: `/api/UCSBOrganization`,
+        url: `/api/ucsborganization`,
         params: {
           orgCode
         }
@@ -23,7 +23,7 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
 
 
   const objectToAxiosPutParams = (ucsbOrganization) => ({
-    url: "/api/UCSBOrganization",
+    url: "/api/ucsborganization",
     method: "PUT",
     params: {
       orgCode: ucsbOrganization.orgCode,
@@ -44,7 +44,7 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
     objectToAxiosPutParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/UCSBOrganization?orgCode=${orgCode}`]
+    [`/api/ucsborganization?orgCode=${orgCode}`]
   );
 
   const { isSuccess } = mutation

@@ -52,7 +52,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
         );
     });
 
-    test("on submit, makes request to backend, and redirects to /UCSBOrganization", async () => {
+    test("on submit, makes request to backend, and redirects to /ucsborganization", async () => {
 
         const queryClient = new QueryClient();
         const ucsborganization = {
@@ -62,7 +62,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
             inactive: "false"
         };
 
-        axiosMock.onPost("/api/UCSBOrganization/post").reply(202, ucsborganization);
+        axiosMock.onPost("/api/ucsborganization/post").reply(202, ucsborganization);
 
         render(
             <QueryClientProvider client={queryClient}>

@@ -20,13 +20,13 @@ describe("UCSBOrganizationUtils", () => {
             const restoreConsole = mockConsole();
 
             // act
-            onDeleteSuccess("abc");
+            onDeleteSuccess("SKY");
 
             // assert
-            expect(mockToast).toHaveBeenCalledWith("abc");
+            expect(mockToast).toHaveBeenCalledWith("SKY");
             expect(console.log).toHaveBeenCalled();
             const message = console.log.mock.calls[0][0];
-            expect(message).toMatch("abc");
+            expect(message).toMatch("SKY");
 
             restoreConsole();
         });
