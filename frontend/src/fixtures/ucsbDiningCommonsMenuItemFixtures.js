@@ -1,25 +1,25 @@
 const ucsbDiningCommonsMenuItemFixtures = {
     oneItem: {
-        "id": 1,
-        "diningCommonsCode": "Ortega",
-        "name": "Baked Pesto Pasta with Chicken",
-        "station": "Entree Specials"
+            "id": 1,
+            "diningCommonsCode": "Ortega",
+            "name": "Baked Pesto Pasta with Chicken",
+            "station": "Entrees Specials"
     },
     threeItems: [
         {
-            "id": 1,
+            "id": 2,
             "diningCommonsCode": "Ortega",
             "name": "Tofu Banh Mi Sandwich (v)",
-            "station": "Entree Specials"
+            "station": "Entrees Specials"
         },
         {
-            "id": 2,
+            "id": 3,
             "diningCommonsCode": "Ortega",
             "name": "Chicken Caesar Salad",
             "station": "Entrees"
         },
         {
-            "id": 3,
+            "id": 4,
             "diningCommonsCode": "Portola",
             "name": "Cream of Broccoli Soup (v)",
             "station": "Greens & Grains"

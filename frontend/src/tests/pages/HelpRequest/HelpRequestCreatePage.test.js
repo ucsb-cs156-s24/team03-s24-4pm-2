@@ -28,13 +28,13 @@ jest.mock('react-router-dom', () => {
         Navigate: (x) => { mockNavigate(x); return null; }
     };
 });
-
 describe("HelpRequestCreatePage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
 
     beforeEach(() => {
         jest.clearAllMocks();
+      
         axiosMock.reset();
         axiosMock.resetHistory();
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
