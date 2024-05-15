@@ -25,6 +25,10 @@ import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
+import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
+import HelpRequestEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
+
 import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
 import UCSBDiningCommonsMenuItemCreatePage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage";
 import UCSBDiningCommonsMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
@@ -81,7 +85,30 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
+              <Route exact path="/helprequest" element={<HelpRequestIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/helprequest/edit/:id" element={<HelpRequestEditPage />} />
+              <Route exact path="/helprequest/create" element={<HelpRequestCreatePage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
               <Route exact path="/articles" element={<ArticlesIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/articles/edit/:id" element={<ArticlesEditPage />} />
+              <Route exact path="/articles/create" element={<ArticlesCreatePage />} />
             </>
           )
         }
@@ -92,15 +119,7 @@ function App() {
             </>
           )
         }
-        {
-          hasRole(currentUser, "ROLE_ADMIN") && (
-            <>
-
-              <Route exact path="/articles/edit/:id" element={<ArticlesEditPage />} />
-              <Route exact path="/articles/create" element={<ArticlesCreatePage />} />
-            </>
-          )
-        }
+        
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
