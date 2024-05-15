@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s24/team03-s24-4pm-2
 owner: ucsb-cs156-s24
 repo_name: team03-s24-4pm-2
-pull_requests: [{"author":{"id":"MDQ6VXNlcjQ2NjU2NjI5","is_bot":false,"login":"kmflippo","name":""},"headRefName":"Kelly-Yusheng-navbar","number":124,"title":"Fixing navbar","url":"https://github.com/ucsb-cs156-s24/team03-s24-4pm-2/pull/124"},{"author":{"id":"U_kgDOCeK7pw","is_bot":false,"login":"WhrainySu","name":""},"headRefName":"Yusheng-UCSBOrganization-NewIndexPage","number":120,"title":"Yusheng ucsb organization new index page","url":"https://github.com/ucsb-cs156-s24/team03-s24-4pm-2/pull/120"}]
+pull_requests: [{"author":{"id":"U_kgDOCeK7pw","is_bot":false,"login":"WhrainySu","name":""},"headRefName":"Yusheng-UCSBOrganization-NewIndexPage","number":120,"title":"Yusheng ucsb organization new index page","url":"https://github.com/ucsb-cs156-s24/team03-s24-4pm-2/pull/120"}]
