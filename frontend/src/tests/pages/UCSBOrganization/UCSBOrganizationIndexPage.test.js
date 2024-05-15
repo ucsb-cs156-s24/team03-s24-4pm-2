@@ -121,7 +121,6 @@ describe("UCSBOrganizationIndexPage tests", () => {
         axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
         axiosMock.onDelete("/api/ucsborganization").reply(200, "UCSBOrganization with orgCode SKY was deleted");
 
-
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>

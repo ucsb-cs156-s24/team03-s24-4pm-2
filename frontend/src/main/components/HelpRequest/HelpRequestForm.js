@@ -139,9 +139,8 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="solved"
                             type="checkbox"
                             isInvalid={Boolean(errors.solved)}
-                            {...register("solved", {
-                                required: "Solved field is required."
-                            })}
+                            {...register("solved", {})}
+
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.solved?.message}
