@@ -2,19 +2,19 @@ import React from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDiningCommonsMenuItemsUtils"
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/HelpRequestUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function UCSBDiningCommonsMenuItemTable({
-    items,
+export default function HelpRequestTable({
+    helpRequest,
     currentUser,
-    testIdPrefix = "UCSBDiningCommonsMenuItemTable" }) {
+    testIdPrefix = "HelpRequestTable" }) {
 
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/ucsbdiningcommonsmenuitem/edit/${cell.row.values.id}`) // item
+        navigate(`/helprequest/edit/${cell.row.values.id}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -22,7 +22,7 @@ export default function UCSBDiningCommonsMenuItemTable({
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/ucsbdiningcommonsmenuitem/all"]
+        ["/api/helprequest/all"]
     );
     // Stryker restore all 
 
@@ -34,17 +34,26 @@ export default function UCSBDiningCommonsMenuItemTable({
             Header: 'id',
             accessor: 'id', // accessor is the "key" in the data
         },
+
         {
-            Header: 'Dining Commons Code',
-            accessor: 'diningCommonsCode',
+            Header: 'RequesterEmail',
+            accessor: 'requesterEmail',
         },
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'TableOrBreakoutRoom',
+            accessor: 'tableOrBreakoutRoom',
         },
         {
-            Header: 'Station',
-            accessor: 'station',
+            Header: 'RequestTime',
+            accessor: 'requestTime',
+        },
+        {
+            Header: 'Explanation',
+            accessor: 'explanation',
+        },
+        {
+            Header: 'Solved',
+            accessor: 'solved',
         }
     ];
 
@@ -53,8 +62,13 @@ export default function UCSBDiningCommonsMenuItemTable({
         columns.push(ButtonColumn("Delete", "danger", deleteCallback, testIdPrefix));
     } 
 
+    //have to change boolean to string
+    helpRequest.forEach(function(helpRequest) {
+        helpRequest.solved = helpRequest.solved.toString();
+    });
+
     return <OurTable
-        data={items}
+        data={helpRequest}
         columns={columns}
         testid={testIdPrefix}
     />;
