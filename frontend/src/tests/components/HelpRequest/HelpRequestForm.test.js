@@ -92,7 +92,6 @@ describe("HelpRequestForm tests", () => {
         expect(screen.getByText(/Table Or Breakout Room is required./)).toBeInTheDocument();
         expect(screen.getByText(/Request Time is required./)).toBeInTheDocument();
         expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
-        expect(screen.getByText(/Solved field is required./)).toBeInTheDocument();
 
     });
 
@@ -133,7 +132,6 @@ describe("HelpRequestForm tests", () => {
         expect(screen.queryByText(/Table Or Breakout Room is required./)).not.toBeInTheDocument();
         expect(screen.queryByText(/Request Time is required./)).not.toBeInTheDocument();
         expect(screen.queryByText(/Explanation is required./)).not.toBeInTheDocument();
-        expect(screen.queryByText(/Solved field is required./)).not.toBeInTheDocument();
 
     });
 

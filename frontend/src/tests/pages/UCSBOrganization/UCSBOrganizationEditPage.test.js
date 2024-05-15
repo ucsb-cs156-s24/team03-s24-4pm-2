@@ -1,3 +1,4 @@
+
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -182,3 +183,4 @@ describe("UCSBOrganizationEditPage tests", () => {
        
     });
 });
+
