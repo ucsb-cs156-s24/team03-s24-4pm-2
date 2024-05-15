@@ -89,16 +89,6 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
 
-
-              <Route exact path="/articles" element={<ArticlesIndexPage />} />
-
-            </>
-          )
-        }
-        {
-          hasRole(currentUser, "ROLE_USER") && (
-            <>
-
               <Route exact path="/helprequest" element={<HelpRequestIndexPage />} />
             </>
           )
@@ -135,16 +125,6 @@ function App() {
             </>
           )
         }
-        {
-          hasRole(currentUser, "ROLE_ADMIN") && (
-            <>
-
-              <Route exact path="/articles/edit/:id" element={<ArticlesEditPage />} />
-              <Route exact path="/articles/create" element={<ArticlesCreatePage />} />
-            </>
-          )
-        }
-        
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
@@ -188,7 +168,6 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/ucsborganization" element={<UCSBOrganizationIndexPage />} />
-              <Route exact path="/diningcommonsmenuitem" element={<UCSBDiningCommonsMenuItemIndexPage />} />
             </>
           )
         }
@@ -210,10 +189,6 @@ function App() {
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-              <Route exact path="/ucsborganization/edit/:id" element={<UCSBOrganizationEditPage />} />
-              <Route exact path="/ucsborganization/create" element={<UCSBOrganizationCreatePage />} />
-              <Route exact path="/diningcommonsmenuitem/edit/:id" element={<UCSBDiningCommonsMenuItemEditPage />} />
-              <Route exact path="/diningcommonsmenuitem/create" element={<UCSBDiningCommonsMenuItemCreatePage />} />
               <Route exact path="/ucsbdiningcommonsmenuitem/edit/:id" element={<UCSBDiningCommonsMenuItemEditPage />} />
               <Route exact path="/ucsbdiningcommonsmenuitem/create" element={<UCSBDiningCommonsMenuItemCreatePage />} />
 
