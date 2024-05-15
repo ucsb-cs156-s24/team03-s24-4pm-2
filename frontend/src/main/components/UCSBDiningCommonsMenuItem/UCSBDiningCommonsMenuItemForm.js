@@ -2,7 +2,7 @@ import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" }) {
+function UCSBDiningCommonsMenuItemForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
     // Stryker disable all
     const {
@@ -15,15 +15,9 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
     // Stryker restore all
 
     const navigate = useNavigate();
+    
+    const testIdPrefix = "UCSBDiningCommonsMenuItemForm";
 
-    // For explanation, see: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
-    // Note that even this complex regex may still need some tweaks
-
-    // Stryker disable next-line Regex
-    const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-
-    // Stryker disable next-line all
-    const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
 
     return (
 
@@ -37,7 +31,8 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
                         <Form.Group className="mb-3" >
                             <Form.Label htmlFor="id">Id</Form.Label>
                             <Form.Control
-                                data-testid="UCSBDateForm-id"
+                                // data-testid={testIdPrefix+"-id"}
+                                data-testid= "UCSBDiningCommonsMenuItemForm-id"
                                 id="id"
                                 type="text"
                                 {...register("id")}
@@ -50,36 +45,37 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
 
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="quarterYYYYQ">Quarter YYYYQ</Form.Label>
+                        <Form.Label htmlFor="diningCommonsCode">Dining Commons Code</Form.Label>
                         <Form.Control
-                            data-testid="UCSBDateForm-quarterYYYYQ"
-                            id="quarterYYYYQ"
+                            //data-testid={testIdPrefix + "-diningCommonsCode"}
+                            data-testid= "UCSBDiningCommonsMenuItemForm-diningCommonsCode"
+                            id="diningCommonsCode"
                             type="text"
-                            isInvalid={Boolean(errors.quarterYYYYQ)}
-                            {...register("quarterYYYYQ", { required: true, pattern: yyyyq_regex })}
+                            isInvalid={Boolean(errors.diningCommonsCode)}
+                            {...register("diningCommonsCode", { required: "Dining Commons Code is required."})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.quarterYYYYQ && 'QuarterYYYYQ is required. '}
-                            {errors.quarterYYYYQ?.type === 'pattern' && 'QuarterYYYYQ must be in the format YYYYQ, e.g. 20224 for Fall 2022'}
+                            {errors.diningCommonsCode?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="localDateTime">Date (iso format)</Form.Label>
+                        <Form.Label htmlFor="name">Name</Form.Label>
                         <Form.Control
-                            data-testid="UCSBDateForm-localDateTime"
-                            id="localDateTime"
-                            type="datetime-local"
-                            isInvalid={Boolean(errors.localDateTime)}
-                            {...register("localDateTime", { required: true, pattern: isodate_regex })}
+                            //data-testid={testIdPrefix + "-name"}
+                            data-testid= "UCSBDiningCommonsMenuItemForm-name"
+                            id="name"
+                            type="text"
+                            isInvalid={Boolean(errors.name)}
+                            {...register("name", { required: "Name is required."})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.localDateTime && 'LocalDateTime is required. '}
+                        {errors.name?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
-            </Row> 
+            </Row>
 
             <Row>
 
@@ -87,19 +83,18 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
 
 
 
-                    <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="name">Name</Form.Label>
+                <Form.Group className="mb-3" >
+                        <Form.Label htmlFor="station">Station</Form.Label>
                         <Form.Control
-                            data-testid="UCSBDateForm-name"
-                            id="name"
+                            //data-testid={testIdPrefix + "-station"}
+                            data-testid= "UCSBDiningCommonsMenuItemForm-station"
+                            id="station"
                             type="text"
-                            isInvalid={Boolean(errors.name)}
-                            {...register("name", {
-                                required: "Name is required."
-                            })}
+                            isInvalid={Boolean(errors.station)}
+                            {...register("station", { required: "Station is required."})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.name?.message}
+                        {errors.station?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -109,14 +104,14 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
                 <Col>
                     <Button
                         type="submit"
-                        data-testid="UCSBDateForm-submit"
+                        data-testid={testIdPrefix + "-submit"}
                     >
                         {buttonLabel}
                     </Button>
                     <Button
                         variant="Secondary"
                         onClick={() => navigate(-1)}
-                        data-testid="UCSBDateForm-cancel"
+                        data-testid={testIdPrefix + "-cancel"}
                     >
                         Cancel
                     </Button>
@@ -127,4 +122,4 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
     )
 }
 
-export default UCSBDateForm;
+export default UCSBDiningCommonsMenuItemForm;

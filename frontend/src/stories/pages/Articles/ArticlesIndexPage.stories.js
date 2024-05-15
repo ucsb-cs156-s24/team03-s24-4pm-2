@@ -1,17 +1,17 @@
 import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { recommendationRequestsFixtures } from "fixtures/recommendationRequestsFixtures";
+import { articlesFixtures } from "fixtures/articlesFixtures";
 import { rest } from "msw";
 
-import RecommendationRequestsIndexPage from "main/pages/RecommendationRequests/RecommendationRequestsIndexPage";
+import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 
 export default {
-    title: 'pages/RecommendationRequests/RecommendationRequestsIndexPage',
-    component: RecommendationRequestsIndexPage
+    title: 'pages/Articles/ArticlesIndexPage',
+    component: ArticlesIndexPage
 };
 
-const Template = () => <RecommendationRequestsIndexPage storybook={true}/>;
+const Template = () => <ArticlesIndexPage storybook={true}/>;
 
 export const Empty = Template.bind({});
 Empty.parameters = {
@@ -22,7 +22,7 @@ Empty.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/recommendationRequest/all', (_req, res, ctx) => {
+        rest.get('/api/articles/all', (_req, res, ctx) => {
             return res(ctx.json([]));
         }),
     ]
@@ -38,8 +38,8 @@ ThreeItemsOrdinaryUser.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/recommendationRequest/all', (_req, res, ctx) => {
-            return res(ctx.json(recommendationRequestsFixtures.threeRecommendationRequests));
+        rest.get('/api/articles/all', (_req, res, ctx) => {
+            return res(ctx.json(articlesFixtures.threeArticles));
         }),
     ],
 }
@@ -54,13 +54,12 @@ ThreeItemsAdminUser.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/recommendationRequest/all', (_req, res, ctx) => {
-            return res(ctx.json(recommendationRequestsFixtures.threeRecommendationRequests));
+        rest.get('/api/articles/all', (_req, res, ctx) => {
+            return res(ctx.json(articlesFixtures.threeArticles));
         }),
-        rest.delete('/api/recommendationRequest', (req, res, ctx) => {
+        rest.delete('/api/articles', (req, res, ctx) => {
             window.alert("DELETE: " + JSON.stringify(req.url));
             return res(ctx.status(200),ctx.json({}));
         }),
     ],
-
 }
