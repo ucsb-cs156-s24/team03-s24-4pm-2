@@ -108,6 +108,7 @@ describe("ArticlesForm tests", () => {
 
     });
 
+
     test("invalid email format", async () => {
         const mockSubmitAction = jest.fn();
         render(
@@ -128,7 +129,6 @@ describe("ArticlesForm tests", () => {
         });
     });
     
-
 
     test("that navigate(-1) is called when Cancel is clicked", async () => {
 
