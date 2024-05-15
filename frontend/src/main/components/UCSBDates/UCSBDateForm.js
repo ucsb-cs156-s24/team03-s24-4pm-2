@@ -79,7 +79,7 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
-            </Row>
+            </Row> 
 
             <Row>
 
