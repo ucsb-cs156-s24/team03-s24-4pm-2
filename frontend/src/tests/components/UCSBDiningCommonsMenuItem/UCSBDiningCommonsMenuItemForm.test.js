@@ -69,6 +69,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         expect(await screen.findByTestId(`${testId}-cancel`)).toBeInTheDocument();
         const cancelButton = screen.getByTestId("UCSBDiningCommonsMenuItemForm-cancel");//`${testId}-cancel`);
 
+
         fireEvent.click(cancelButton);
 
         await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith(-1));
@@ -85,6 +86,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
 
         expect(await screen.findByText(/Create/)).toBeInTheDocument();
         const submitButton = screen.getByTestId("UCSBDiningCommonsMenuItemForm-submit"); //`${testId}-submit`);
+
         fireEvent.click(submitButton);
 
         await screen.findByText(/Name is required/);
