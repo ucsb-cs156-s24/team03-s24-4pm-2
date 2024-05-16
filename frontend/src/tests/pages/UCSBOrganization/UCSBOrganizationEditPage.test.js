@@ -43,7 +43,7 @@ describe("UCSBOrganizationEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/ucsborganization", { params: { orgCode: "SKY" } }).timeout();
+            axiosMock.onGet("/api/rganization", { params: { orgCode: "SKY" } }).timeout();
         });
 
         const queryClient = new QueryClient();
