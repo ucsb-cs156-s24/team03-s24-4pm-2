@@ -44,7 +44,7 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
     objectToAxiosPutParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/ucsborganization?orgCode=${orgCode}`]
+    [`/api/UCSBOrganization?orgCode=${orgCode}`]
   );
 
   const { isSuccess } = mutation
