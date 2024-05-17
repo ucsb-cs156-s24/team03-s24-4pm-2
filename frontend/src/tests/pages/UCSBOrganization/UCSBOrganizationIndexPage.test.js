@@ -2,6 +2,8 @@ import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
+import mockConsole from "jest-mock-console";
+import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -21,6 +23,8 @@ jest.mock('react-toastify', () => {
 describe("UCSBOrganizationIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
+
+    const testId = "UCSBOrganizationTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
@@ -59,8 +63,9 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
     test("renders three orgs correctly for regular user", async () => {
         setupUserOnly();
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
 
-        // act
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -116,6 +121,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
         axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
         axiosMock.onDelete("/api/ucsborganization").reply(200, "UCSBOrganization with orgCode SKY was deleted");
 
+
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -136,10 +142,10 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
         await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBOrganization with orgCode SKY was deleted") });
 
-        // await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
-        // expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
-        // expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
-        // expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "SKY" });
+        //await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
+        //expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
+        //expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
+        //expect(axiosMock.history.delete[0].params).toEqual({ orgCode: SKY });
     });
 
 });
