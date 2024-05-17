@@ -1,4 +1,9 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+import { useParams } from "react-router-dom";
+import UCSBOrganizationForm from "main/components/UCSBOrganization/UCSBOrganizationForm";
+import { Navigate } from 'react-router-dom'
+import { useBackend, useBackendMutation } from "main/utils/useBackend";
+import { toast } from "react-toastify";
 
 export default function UCSBOrganizationEditPage({storybook=false}) {
   let { orgCode } = useParams();
@@ -56,7 +61,10 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Edit page not yet implemented</h1>
+        <h1>Edit UCSBOrganization</h1>
+        {
+          ucsbOrganization && <UCSBOrganizationForm initialContents={ucsbOrganization} submitAction={onSubmit} buttonLabel="Update" />
+        }
       </div>
     </BasicLayout>
   )
