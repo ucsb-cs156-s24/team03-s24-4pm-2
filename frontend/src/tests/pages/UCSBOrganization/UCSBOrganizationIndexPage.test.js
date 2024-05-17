@@ -2,8 +2,6 @@ import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import mockConsole from "jest-mock-console";
-import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -23,8 +21,6 @@ jest.mock('react-toastify', () => {
 describe("UCSBOrganizationIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
-
-    const testId = "UCSBOrganizationTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
@@ -63,9 +59,8 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
     test("renders three orgs correctly for regular user", async () => {
         setupUserOnly();
-        const queryClient = new QueryClient();
-        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
 
+        // act
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
