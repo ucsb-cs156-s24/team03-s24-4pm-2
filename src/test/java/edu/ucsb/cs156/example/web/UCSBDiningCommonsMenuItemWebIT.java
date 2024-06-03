@@ -21,7 +21,7 @@ public class UCSBDiningCommonsMenuItemWebIT extends WebTestCase {
     public void admin_user_can_create_menuitem() throws Exception {
         setupUser(true);
 
-        page.getByText("UCSB Dining Commons Menu Items").click();
+        page.getByText("UCSBDiningCommonsMenuItem").click();
 
         page.getByText("Create Menu Item").click();
         assertThat(page.getByText("Create New Dining Commons Menu Item")).isVisible();
@@ -46,10 +46,10 @@ public class UCSBDiningCommonsMenuItemWebIT extends WebTestCase {
     }
 
     @Test
-    public void regular_user_cannot_create_restaurant() throws Exception {
+    public void regular_user_cannot_create_menuitem() throws Exception {
         setupUser(false);
 
-        page.getByText("UCSB Dining Commons Menu Items").click();
+        page.getByText("UCSBDiningCommonsMenuItem").click();
 
         assertThat(page.getByText("Create Menu Item")).not().isVisible();
         assertThat(page.getByTestId("UCSBDiningCommonsMenuItemTable-cell-row-0-col-station")).not().isVisible();
