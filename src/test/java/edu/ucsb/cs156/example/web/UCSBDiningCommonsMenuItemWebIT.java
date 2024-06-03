@@ -31,7 +31,7 @@ public class UCSBDiningCommonsMenuItemWebIT extends WebTestCase {
         page.getByTestId("UCSBDiningCommonsMenuItemForm-submit").click();
         
         assertThat(page.getByTestId("UCSBDiningCommonsMenuItemTable-cell-row-0-col-station"))
-                .hasText("Entrees Specials");
+                .hasText("EntreesSpecials");
 
         // page.getByTestId("UCSBDiningCommonsMenuItemTable-cell-row-0-col-Edit-button").click();
         // assertThat(page.getByText("Edit Restaurant")).isVisible();
