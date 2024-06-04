@@ -80,7 +80,7 @@ public class RecommendationRequestIT {
         recommendationRequestRepository.save(recommendationRequest);
 
         // act
-        MvcResult response = mockMvc.perform(get("/api/recommendationRequests?id=1"))
+        MvcResult response = mockMvc.perform(get("/api/recommendationrequest?id=1"))
                 .andExpect(status().isOk()).andReturn();
 
         // assert
