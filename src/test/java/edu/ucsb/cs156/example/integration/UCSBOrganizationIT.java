@@ -45,7 +45,7 @@ public class UCSBOrganizationIT {
         public GrantedAuthoritiesService grantedAuthoritiesService;
 
         @Autowired
-        UCSBOrganizationRepository UCSBOrganizationRepository;
+        UCSBOrganizationRepository ucsbOrganizationRepository;
 
         @Autowired
         public MockMvc mockMvc;
@@ -61,21 +61,21 @@ public class UCSBOrganizationIT {
         public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
                 // arrange
 
-                UCSBOrganization organization = UCSBOrganization.builder()
+                UCSBOrganization org = UCSBOrganization.builder()
                                 .orgCode("ZPR")
                                 .orgTranslationShort("ZETA")
                                 .orgTranslation("ZETA")
                                 .inactive(false)
                                 .build();
 
-                UCSBOrganizationRepository.save(organization);
+                ucsbOrganizationRepository.save(org);
 
                 // act
                 MvcResult response = mockMvc.perform(get("/api/ucsborganization?orgCode=ZPR"))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
-                String expectedJson = mapper.writeValueAsString(organization);
+                String expectedJson = mapper.writeValueAsString(org);
                 String responseString = response.getResponse().getContentAsString();
                 assertEquals(expectedJson, responseString);
         }
@@ -85,12 +85,14 @@ public class UCSBOrganizationIT {
         public void an_admin_user_can_post_a_new_organization() throws Exception {
                 // arrange
 
-                UCSBOrganization organization1 = UCSBOrganization.builder()
+                UCSBOrganization ZPR = UCSBOrganization.builder()
                                 .orgCode("ZPR")
                                 .orgTranslationShort("ZETA")
                                 .orgTranslation("ZETA")
                                 .inactive(false)
                                 .build();
+
+                ucsbOrganizationRepository.save(ZPR);
 
                 // act
                 MvcResult response = mockMvc.perform(
@@ -99,7 +101,7 @@ public class UCSBOrganizationIT {
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
-                String expectedJson = mapper.writeValueAsString(organization1);
+                String expectedJson = mapper.writeValueAsString(ZPR);
                 String responseString = response.getResponse().getContentAsString();
                 assertEquals(expectedJson, responseString);
         }
