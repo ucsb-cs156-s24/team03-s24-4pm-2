@@ -1,9 +1,9 @@
 const ucsbDiningCommonsMenuItemFixtures = {
     oneItem: {
-        "id": 1,
-        "diningCommonsCode": "Ortega",
-        "name": "Baked Pesto Pasta with Chicken",
-        "station": "Entrees Specials"
+            "id": 1,
+            "diningCommonsCode": "Ortega",
+            "name": "Baked Pesto Pasta with Chicken",
+            "station": "Entrees Specials"
     },
     threeItems: [
         {
