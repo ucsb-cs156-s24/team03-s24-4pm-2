@@ -10,6 +10,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import java.time.LocalDateTime;
+
 import edu.ucsb.cs156.example.WebTestCase;
 
 @ExtendWith(SpringExtension.class)
@@ -19,6 +21,7 @@ import edu.ucsb.cs156.example.WebTestCase;
 public class MenuItemReviewWebIT extends WebTestCase {
     @Test
     public void admin_user_can_create_edit_delete_MenuItemReview() throws Exception {
+        LocalDateTime reviewDate1 = LocalDateTime.parse("2022-01-03T00:00:00");
         setupUser(true);
 
         page.getByText("MenuItemReview").click();
@@ -29,7 +32,8 @@ public class MenuItemReviewWebIT extends WebTestCase {
         page.getByTestId("MenuItemReviewForm-comments").fill("Hmmmmmmmmmm mid");
         page.getByTestId("MenuItemReviewForm-reviewerEmail").fill("reviewer2@gmail.com");
         page.getByTestId("MenuItemReviewForm-star").fill("3");
-        page.getByTestId("MenuItemReviewForm-dateReviewed").fill("2022-01-03T00:00:00");
+        page.getByTestId("MenuItemReviewForm-dateReviewed").click();
+        page.getByTestId("MenuItemReviewForm-dateReviewed").press("Enter");
         page.getByTestId("MenuItemReviewForm-submit").click();
 
         assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-comments"))
