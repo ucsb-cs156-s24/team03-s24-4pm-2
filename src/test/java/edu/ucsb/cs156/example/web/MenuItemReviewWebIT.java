@@ -32,9 +32,9 @@ public class MenuItemReviewWebIT extends WebTestCase {
         page.getByTestId("MenuItemReviewForm-reviewerEmail").fill("reviewer2@gmail.com");
         page.getByTestId("MenuItemReviewForm-star").fill("3");
         page.getByTestId("MenuItemReviewForm-dateReviewed").click();
-        page.getByTestId("MenuItemReviewForm-dateReviewed").fill("12141212");
+        page.getByTestId("MenuItemReviewForm-dateReviewed").pressSequentially("12141212");
         page.getByTestId("MenuItemReviewForm-dateReviewed").press("ArrowRight");
-        page.getByTestId("MenuItemReviewForm-dateReviewed").fill("1212AM");
+        page.getByTestId("MenuItemReviewForm-dateReviewed").pressSequentially("1212AM");
         page.getByTestId("MenuItemReviewForm-submit").click();
 
         assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-comments"))
