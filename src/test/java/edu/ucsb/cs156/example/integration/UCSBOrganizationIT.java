@@ -36,6 +36,7 @@ import edu.ucsb.cs156.example.testconfig.TestConfig;
 @ActiveProfiles("integration")
 @Import(TestConfig.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+
 public class UCSBOrganizationIT {
         @Autowired
         public CurrentUserService currentUserService;
@@ -44,7 +45,7 @@ public class UCSBOrganizationIT {
         public GrantedAuthoritiesService grantedAuthoritiesService;
 
         @Autowired
-        UCSBOrganizationRepository organizationRepository;
+        UCSBOrganizationRepository UCSBOrganizationRepository;
 
         @Autowired
         public MockMvc mockMvc;
@@ -67,7 +68,7 @@ public class UCSBOrganizationIT {
                                 .inactive(false)
                                 .build();
 
-                organizationRepository.save(organization);
+                UCSBOrganizationRepository.save(organization);
 
                 // act
                 MvcResult response = mockMvc.perform(get("/api/ucsborganization?orgCode=ZPR"))
