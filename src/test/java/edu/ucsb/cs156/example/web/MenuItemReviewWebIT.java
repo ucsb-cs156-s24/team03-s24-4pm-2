@@ -21,7 +21,6 @@ import edu.ucsb.cs156.example.WebTestCase;
 public class MenuItemReviewWebIT extends WebTestCase {
     @Test
     public void admin_user_can_create_edit_delete_MenuItemReview() throws Exception {
-        LocalDateTime reviewDate1 = LocalDateTime.parse("2022-01-03T00:00:00");
         setupUser(true);
 
         page.getByText("MenuItemReview").click();
@@ -33,13 +32,15 @@ public class MenuItemReviewWebIT extends WebTestCase {
         page.getByTestId("MenuItemReviewForm-reviewerEmail").fill("reviewer2@gmail.com");
         page.getByTestId("MenuItemReviewForm-star").fill("3");
         page.getByTestId("MenuItemReviewForm-dateReviewed").click();
-        page.getByTestId("MenuItemReviewForm-dateReviewed").press("Enter");
+        page.getByTestId("MenuItemReviewForm-dateReviewed").fill("12141212");
+        page.getByTestId("MenuItemReviewForm-dateReviewed").press("ArrowRight");
+        page.getByTestId("MenuItemReviewForm-dateReviewed").fill("1212AM");
         page.getByTestId("MenuItemReviewForm-submit").click();
 
         assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-comments"))
                 .hasText("Hmmmmmmmmmm mid");
 
-        page.getByTestId("MenuItemReviews-cell-row-0-col-Edit-button").click();
+        page.getByTestId("MenuItemReviewTable-cell-row-0-col-Edit-button").click();
         assertThat(page.getByText("Edit Review")).isVisible();
         page.getByTestId("MenuItemReviewForm-comments").fill("DISGUSTING");
         page.getByTestId("MenuItemReviewForm-submit").click();
